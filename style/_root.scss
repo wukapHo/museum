@@ -1,0 +1,71 @@
+$bg-light: #ffffff;
+$bg-dark: #030303;
+$dark-red: #710707;
+$gold: #9d8665;
+$white: #ffffff;
+$txt-dark: #000000;
+$forum: "Forum", cursive;
+$roboto: "Roboto", sans-serif;
+$font1: 80px;
+$font2: 22px;
+$font3: 28px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1480px;
+  padding: 0 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    max-width: 1024px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media (max-width: 420px) {
+    max-width: 420px;
+  }
+}
+
+.hidden {
+  position: absolute;
+  display: block;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(0px 0px 99.9% 99.9%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+}
+
+.dark-section {
+  background-color: $bg-dark;
+}
+
+.light-section {
+  background-color: $bg-light;
+}
+
+.panorama {
+  width: 100vw;
+  height: 99vh;
+}
