@@ -14,9 +14,56 @@ export function setGallery() {
   }
 
   const sortedPaths = shuffleArray(pathsToImages);
-  const newImages = sortedPaths.map(item => `<img src="${item}" class="gallery-section__image lazyload" alt="gallery${sortedPaths.indexOf(item) + 1}">`);
+  const newImages = sortedPaths.map(item => `<img src="${item}" class="gallery-section__image align-bottom slide-in lazyload" alt="gallery${sortedPaths.indexOf(item) + 1}">`);
 
   for (let item of newImages) {
     innerContainer.innerHTML += item;
   }
+}
+
+export function viewImages() {
+  const galleryImages = document.querySelectorAll('.gallery-section__image');
+  const galleryContainer = document.querySelector('.gallery-container');
+
+  const viewElemAt = galleryContainer.getBoundingClientRect().top;
+  window.addEventListener('scroll', () =>  debounce(checkImages(galleryImages, viewElemAt), 20, true));
+
+  function checkImages(elems, viewElemAt) {
+    let minY = 0;
+    let maxY = window.innerHeight * 75 / 100;
+
+    for (let i = 0; i < elems.length; i++) {
+      viewElemAt = elems[i].getBoundingClientRect().top;
+
+      if (viewElemAt > minY && viewElemAt < maxY) {
+        elems[i].classList.add('active');
+      } else if (elems[i].getBoundingClientRect().top > window.innerHeight) {
+        elems[i].classList.remove('active');
+      }
+    }
+  }
+
+  checkImages(galleryImages, viewElemAt);
+
+  function debounce(func, wait, immediate) {
+    let timeout;
+
+    return function executedFunction() {
+      const context = this;
+      const args = arguments;
+
+      const later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+
+      const callNow = immediate && !timeout;
+
+      clearTimeout(timeout);
+
+      timeout = setTimeout(later, wait);
+
+      if (callNow) func.apply(context, args);
+    };
+  };
 }
