@@ -166,20 +166,21 @@
         <div class="video-section__player-wrapper">
           <video src="./assets/video/video0.mp4" poster="./assets/video/poster0.jpg" class="video-section__player"></video>
           <button class="video-section__player-icon"><img src="./assets/svg/video-play-icon.svg" class="video-section__player-icon-image" alt="icon"></button>
-        </div>
-        <div class="video-section__status-bar">
-          <button class="video-section__status-bar-item video-section__status-bar-item--play"><img src="./assets/svg/play-icon.svg" class="video-section__status-bar-item--play" alt="icon"></button>
-          <input type="range" class="video-section__status-bar-item" id="time" value="0" min="0" max="100" step="1">
-          <button class="video-section__status-bar-item video-section__status-bar-item--sound"><img src="./assets/svg/sound-icon.svg" class="video-section__status-bar-item--sound" alt="icon"></button>
-          <input type="range" class="video-section__status-bar-item" id="sound" value="42" min="0" max="100" step="1">
-          <button class="video-section__status-bar-item video-section__status-bar-item--fullscreen"><img src="./assets/svg/fullscreen-icon.svg" class="video-section__status-bar-item--fullscreen" alt="icon"></button>
+          <div class="video-section__playback-rate video-section__playback-rate--hide">1x</div>
+          <div class="video-section__status-bar">
+            <button class="video-section__status-bar-item" id="toggle"><img src="./assets/svg/play-icon.svg" class="video-section__status-bar-item--play" alt="icon"></button>
+            <input type="range" class="video-section__status-bar-item" id="time" value="0" min="0" max="100" step="1">
+            <button class="video-section__status-bar-item" id="sound-button"><img src="./assets/svg/sound-icon.svg" class="video-section__status-bar-item--sound" alt="icon"></button>
+            <input type="range" class="video-section__status-bar-item" id="sound" value="42" min="0" max="100" step="1">
+            <button class="video-section__status-bar-item" id="fullscreen"><img src="./assets/svg/fullscreen-icon.svg" class="video-section__status-bar-item--fullscreen" alt="icon"></button>
+          </div>
         </div>
         <div class="video-section__playlist swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <iframe
                 loading="lazy"
-                src="https://www.youtube.com/embed/zp1BXPX8jcU"
+                src="https://www.youtube.com/embed/zp1BXPX8jcU?enablejsapi=1"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -189,7 +190,7 @@
             <div class="swiper-slide">
               <iframe
                 loading="lazy"
-                src="https://www.youtube.com/embed/Vi5D6FKhRmo"
+                src="https://www.youtube.com/embed/Vi5D6FKhRmo?enablejsapi=1"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -199,7 +200,7 @@
             <div class="swiper-slide">
               <iframe
                 loading="lazy"
-                src="https://www.youtube.com/embed/NOhDysLnTvY"
+                src="https://www.youtube.com/embed/NOhDysLnTvY?enablejsapi=1"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -209,7 +210,7 @@
             <div class="swiper-slide">
               <iframe
                 loading="lazy"
-                src="https://www.youtube.com/embed/aWmJ5DgyWPI"
+                src="https://www.youtube.com/embed/aWmJ5DgyWPI?enablejsapi=1"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -219,7 +220,7 @@
             <div class="swiper-slide">
               <iframe
                 loading="lazy"
-                src="https://www.youtube.com/embed/2OR0OCr6uRE"
+                src="https://www.youtube.com/embed/2OR0OCr6uRE?enablejsapi=1"
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -250,15 +251,15 @@
             <div class="ticket-type-wrapper">
               <h3 class="tickets-section__subtitle ticket-type">Ticket Type</h3>
               <label class="tickets-section__label tickets-section__label--first">Permanent exhibition
-                <input type="radio" checked="checked" name="radio">
+                <input type="radio" class="ticket-section__radio" id="r-1" checked="checked" name="radio">
                 <span class="checkmark"></span>
               </label>
               <label class="tickets-section__label">Temporary exhibition
-                <input type="radio" name="radio">
+                <input type="radio" class="ticket-section__radio" id="r-2" name="radio">
                 <span class="checkmark"></span>
               </label>
               <label class="tickets-section__label">Combined Admission
-                <input type="radio" name="radio">
+                <input type="radio" class="ticket-section__radio" id="r-3" name="radio">
                 <span class="checkmark"></span>
               </label>
             </div>
@@ -268,16 +269,16 @@
             <p class="amount__item amount__item--upper">Basic 18+</p>
             <div class="amount__number">
               <button type="button" class="amount__number-button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
-              <input type="number" class="amount__number-item" min="0" max="20" value="1" readonly>
+              <input type="number" class="amount__number-item" id="basic-count" min="0" max="20" value="1" readonly>
               <button type="button" class="amount__number-button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
             <p class="amount__item amount__item--lower">Senior 65+</p>
             <div class="amount__number">
               <button type="button" class="amount__number-button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
-              <input type="number" class="amount__number-item" min="0" max="20" value="1" readonly>
+              <input type="number" class="amount__number-item" id="senior-count" min="0" max="20" value="1" readonly>
               <button type="button" class="amount__number-button" onclick="this.previousElementSibling.stepUp()">+</button>
             </div>
-            <h3 class="tickets-section__subtitle total">Total &euro;220</h3>
+            <h3 class="tickets-section__subtitle total">Total &euro;<span id="total-cost">30</span></h3>
             <button class="amount__button-buy">Buy Now</button>
           </div>
         </div>
@@ -323,9 +324,9 @@
                 required>
               <select id="ticket-type" class="booking-tickets__ticket-type" required>
                 <option disabled selected hidden value="">Ticket Type</option>
-                <option value="permanent">Permanent exhibition</option>
-                <option value="temporary">Temporary exhibition</option>
-                <option value="combined">Combined Admission</option>
+                <option name="r-1" id="fr-1" value="permanent" class="form-select">Permanent exhibition</option>
+                <option name="r-2" id="fr-2" value="temporary" class="form-select">Temporary exhibition</option>
+                <option name="r-3" id="fr-3" value="combined" class="form-select">Combined Admission</option>
               </select>
               <div class="booking-tickets__entry-ticket">
                 <p class="booking-tickets__entry-ticket-title">Entry Ticket</p>
@@ -333,7 +334,7 @@
                   <p class="booking-tickets__entry-text">Basic 18+ (20 &euro;)</p>
                   <div class="booking-tickets__number">
                     <button type="button" class="booking-tickets__entry-button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
-                    <input type="number" class="booking-tickets__entry-item" min="0" max="20" value="1" readonly>
+                    <input type="number" class="booking-tickets__entry-item" id="basic-count-form" min="0" max="20" value="1" readonly>
                     <button type="button" class="booking-tickets__entry-button" onclick="this.previousElementSibling.stepUp()">+</button>
                   </div>
                 </div>
@@ -341,7 +342,7 @@
                   <p class="booking-tickets__entry-text">Senior 65+ (10 &euro;)</p>
                   <div class="booking-tickets__number">
                     <button type="button" class="booking-tickets__entry-button" onclick="this.nextElementSibling.stepDown()">&ndash;</button>
-                    <input type="number" class="booking-tickets__entry-item" min="0" max="20" value="1" readonly>
+                    <input type="number" class="booking-tickets__entry-item" id="senior-count-form" min="0" max="20" value="1" readonly>
                     <button type="button" class="booking-tickets__entry-button" onclick="this.previousElementSibling.stepUp()">+</button>
                   </div>
                 </div>
@@ -357,21 +358,21 @@
             <div class="booking-tickets__right-ballot">Temporary exhibition</div>
             <div class="booking-tickets__ticket-count">
               <div class="booking-tickets__count-wrapper">
-                <div class="booking-tickets__counter">2</div>
-                <p class="booking-tickets__ticket-title">Basic (20 &euro;)</p>
+                <div class="booking-tickets__counter" id="basic-count-field-form">2</div>
+                <p class="booking-tickets__ticket-title">Basic (<span class="basic-price">20</span> &euro;)</p>
               </div>
-              <p class="booking-tickets__ticket-sum"><span id="basic-count">40 </span>&euro;</p>
+              <p class="booking-tickets__ticket-sum"><span id="basic-sum-form">20 </span>&euro;</p>
             </div>
             <div class="booking-tickets__ticket-count booking-tickets__ticket-count--lower">
               <div class="booking-tickets__count-wrapper">
-                <div class="booking-tickets__counter">2</div>
-                <p class="booking-tickets__ticket-title">Senior (10 &euro;)</p>
+                <div class="booking-tickets__counter" id="senior-count-field-form">2</div>
+                <p class="booking-tickets__ticket-title">Senior (<span class="senior-price">10</span> &euro;)</p>
               </div>
-              <p class="booking-tickets__ticket-sum"><span id="senior-count">20 </span>&euro;</p>
+              <p class="booking-tickets__ticket-sum"><span id="senior-sum-form">10 </span>&euro;</p>
             </div>
             <div class="booking-tickets__ticket-count booking-tickets__ticket-count--total">
               <p class="booking-tickets__ticket-title booking-tickets__ticket-title--total">Total:</p>
-              <p class="booking-tickets__ticket-sum booking-tickets__ticket-sum--total"><span id="total-count">60 </span>&euro;</p>
+              <p class="booking-tickets__ticket-sum booking-tickets__ticket-sum--total"><span id="total-count">30 </span>&euro;</p>
             </div>
             <div class="booking-tickets__card">
               <div class="booking-tickets__card-visa"></div>
